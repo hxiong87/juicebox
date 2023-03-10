@@ -19,12 +19,17 @@ usersRouter.use((req, res, next) => {
 });
 
 usersRouter.get('/', async (req, res) => {
-    console.log("hello")
-  const users = await getAllUsers();
+   try {
 
-  res.send({
-    users
-  });
+    const users = await getAllUsers();
+
+    res.send({
+      users
+    });
+   } catch (error){
+    console.log(error)
+   }
+
 });
 
 usersRouter.post('/login', async (req, res, next) => {
